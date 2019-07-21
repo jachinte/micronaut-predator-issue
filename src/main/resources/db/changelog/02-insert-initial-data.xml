@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+  <preConditions>
+    <runningAs username="dbuser"/>
+  </preConditions>
+  <changeSet id="01" author="miguel">
+    <!-- Owners -->
+    <insert catalogName="mycatalog" schemaName="myschema" tableName="owners">
+      <column name="id" value="1"/>
+      <column name="name" value="Fred"/>
+      <column name="age" value="45"/>
+    </insert>
+    <insert catalogName="mycatalog" schemaName="myschema" tableName="owners">
+      <column name="id" value="2"/>
+      <column name="name" value="Barney"/>
+      <column name="age" value="40"/>
+    </insert>
+  </changeSet>
+  <changeSet id="02" author="miguel">
+    <!-- Pets -->
+    <insert catalogName="mycatalog" schemaName="myschema" tableName="pets">
+      <column name="id" value="54529912-5932-4337-94e9-b395187ba597"/>
+      <column name="name" value="Dino"/>
+      <column name="type" value="DOG"/>
+      <column name="owner_id" value="1"/>
+    </insert>
+    <insert catalogName="mycatalog" schemaName="myschema" tableName="pets">
+      <column name="id" value="23bc3100-9976-418f-87f8-6cf5a693abfc"/>
+      <column name="name" value="Baby Puss"/>
+      <column name="type" value="CAT"/>
+      <column name="owner_id" value="1"/>
+    </insert>
+    <insert catalogName="mycatalog" schemaName="myschema" tableName="pets">
+      <column name="id" value="d1e6008e-b0fe-4380-8be5-0a99162e75d4"/>
+      <column name="name" value="Hoppy"/>
+      <column name="type" value="DOG"/>
+      <column name="owner_id" value="2"/>
+    </insert>
+  </changeSet>
+</databaseChangeLog>

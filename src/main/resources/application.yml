@@ -1,0 +1,17 @@
+micronaut:
+  application:
+    name: example-jdbc
+jackson:
+  bean-introspection-module: true
+---
+datasources:
+  arbiter:
+    url: 'jdbc:postgresql://localhost:5432/${db-name}'
+    username: '${db-username}'
+    password: '${db-password}'
+    dialect: POSTGRES
+    driverClassName: org.postgresql.Driver
+liquibase:
+  datasources:
+    arbiter:
+      change-log: classpath:db/liquibase-changelog.xml

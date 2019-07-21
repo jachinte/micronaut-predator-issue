@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+  <preConditions>
+    <runningAs username="dbuser"/>
+  </preConditions>
+  <changeSet id="01" author="miguel">
+    <sql dbms="postgresql" endDelimiter=";">
+      CREATE SCHEMA myschema
+    </sql>
+    <rollback>
+      DROP SCHEMA IF EXISTS myschema;
+    </rollback>
+  </changeSet>
+  <changeSet id="02" author="miguel">
+    <createTable tableName="owners"
+      catalogName="mycatalog"
+      schemaName="myschema"
+      remarks="A table for owners">
+      <column name="id"
+        type="bigint"
+        autoIncrement="true">
+        <constraints nullable="false"
+          unique="true"
+          primaryKey="true"/>
+      </column>
+      <column name="name"
+        type="varchar(25)">
+      </column>
+      <column name="age"
+        type="int">
+      </column>
+    </createTable>
+    <createTable tableName="pets"
+      catalogName="mycatalog"
+      schemaName="myschema"
+      remarks="A table for pets">
+      <column name="id"
+        type="UUID">
+        <constraints nullable="false"
+          unique="true"
+          primaryKey="true"/>
+      </column>
+      <column name="name"
+        type="varchar(25)">
+      </column>
+      <column name="owner_id"
+        type="bigint">
+        <constraints nullable="false"
+          foreignKeyName="fk_owner_id"
+          references="myschema.owners(id)"/>
+      </column>
+      <column name="type"
+        type="varchar(3)">
+      </column>
+    </createTable>
+  </changeSet>
+</databaseChangeLog>
