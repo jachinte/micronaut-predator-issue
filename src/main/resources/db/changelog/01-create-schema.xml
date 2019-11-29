@@ -55,5 +55,27 @@
         type="varchar(3)">
       </column>
     </createTable>
+    <createTable tableName="owners_pets"
+      catalogName="mycatalog"
+      schemaName="myschema"
+      remarks="A table for mapping owners and pets">
+      <column name="owner_id"
+        type="bigint">
+        <constraints nullable="false"
+          foreignKeyName="fk_owner_id"
+          references="myschema.owners(id)"/>
+      </column>
+      <column name="pet_id"
+        type="UUID">
+        <constraints nullable="false"
+          foreignKeyName="fk_pet_id"
+          references="myschema.pets(id)"/>
+      </column>
+    </createTable>
+    <addPrimaryKey catalogName="mycatalog"
+      columnNames="owner_id, pet_id"
+      constraintName="pk_owners_pets"
+      schemaName="myschema"
+      tableName="owners_pets"/>
   </changeSet>
 </databaseChangeLog>
