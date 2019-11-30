@@ -6,7 +6,7 @@ jackson:
 ---
 datasources:
   arbiter:
-    url: 'jdbc:postgresql://localhost:5432/${db-name}'
+    url: 'jdbc:postgresql://localhost:5432/${db-name}?stringtype=unspecified'
     username: '${db-username}'
     password: '${db-password}'
     dialect: POSTGRES
